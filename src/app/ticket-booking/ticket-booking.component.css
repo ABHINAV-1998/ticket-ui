@@ -1,0 +1,16 @@
+#refreshPageData {
+  border: none;
+  box-shadow: none;
+  color: blue;
+}
+row {
+  display: flex;
+}
+
+.col {
+  flex: 50%;
+}
+
+#time {
+  color: red
+}

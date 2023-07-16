@@ -1,0 +1,135 @@
+<div class="row">
+  <div class="col">
+    <p>
+      Available Seats: {{ seatsAvailable }}
+      <span>
+        <button
+          id="refreshPageData"
+          title="Refresh Page"
+          type="text"
+          (click)="checkCurrentAvailableSeats()"
+        >
+          <span class="material-icons-outlined">refresh</span>
+        </button>
+      </span>
+    </p>
+
+    <div>
+      <form nz-form [formGroup]="userForm" (ngSubmit)="submitForm()">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Invalid name">
+            <nz-form-label nzRequired nzFor="firstName"
+              >First Name</nz-form-label
+            >
+            <input
+              nz-input
+              formControlName="firstName"
+              id="firstName"
+              placeholder="Enter first name"
+              maxlength="50"
+              minlength="1"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Invalid name">
+            <nz-form-label nzRequired nzFor="lastName">Last Name</nz-form-label>
+            <input
+              nz-input
+              formControlName="lastName"
+              id="lastName"
+              placeholder="Enter last name"
+              maxlength="50"
+              minlength="1"
+            />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Invalid age">
+            <nz-form-label nzRequired nzFor="age">Age</nz-form-label>
+            <input
+              nz-input
+              formControlName="age"
+              id="age"
+              placeholder="Enter your age"
+              maxlength="3"
+              minlength="1"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Invalid emailId">
+            <nz-form-label nzRequired nzFor="emailId">EmailId</nz-form-label>
+            <input
+              nz-input
+              formControlName="emailId"
+              id="emailId"
+              placeholder="Enter your emailId"
+              maxlength="50"
+              minlength="3"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Invalid phone number">
+            <nz-form-label nzRequired nzFor="mobileNumber">Phone</nz-form-label>
+            <input
+              nz-input
+              formControlName="mobileNumber"
+              id="mobileNumber"
+              placeholder="Enter your mobile number"
+              maxlength="12"
+              minlength="6"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Invalid number">
+            <nz-form-label nzRequired nzFor="tickets"
+              >Number of Tickets to book</nz-form-label
+            >
+            <input
+              nz-input
+              formControlName="tickets"
+              id="tickets"
+              placeholder="Enter number of tickets to book"
+              maxlength="2"
+              minlength="1"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <button nz-button nzType="primary" type="submit">Submit Form</button>
+      </form>
+    </div>
+  </div>
+  <div class="col">
+    <div>
+      <span id="time">{{ time }}</span>
+    </div>
+    <div>
+      <nz-table #basicData [nzData]="Users">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Tickets</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicData.data">
+            <td>
+              <span class="user-name">{{ data.name }}</span>
+            </td>
+            <td>
+              <span class="user-tickets">{{ data.tickets }}</span>
+            </td>
+            <td>
+              <span class="user-dateOfBooking">{{ data.date }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</div>
